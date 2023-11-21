@@ -1,5 +1,5 @@
 import com.course.selenium.*;
-import io.cucumber.java.Before;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,9 +17,9 @@ public class Zad2StoreTest {
     Zad2CartPage cartPage;
     Zad2CheckoutPage checkoutPage;
 
-    @Before
+   @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         webDriver = new ChromeDriver();
         wait = new WebDriverWait(webDriver, 3);
         webDriver.manage().window().maximize();

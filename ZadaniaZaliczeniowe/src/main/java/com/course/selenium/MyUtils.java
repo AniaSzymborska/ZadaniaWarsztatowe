@@ -8,7 +8,7 @@ public class MyUtils {
     public static WebDriver getWebDriver(String browser){
         switch (browser.toUpperCase()){
             case "CHROME": {
-                System.setProperty("webdriver.chrome.driver","src/main/resources/driver/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver","src/main/resources/drivers/chromedriver.exe");
                 return new ChromeDriver();
             }
             default:{

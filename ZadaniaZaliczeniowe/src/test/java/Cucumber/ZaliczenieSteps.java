@@ -11,6 +11,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.Assert;
+
+import java.util.List;
+
 public class ZaliczenieSteps {
 
     WebDriver webDriver;
@@ -18,7 +21,7 @@ public class ZaliczenieSteps {
 
     @Before
     public void IOpenABrowser() {
-        System.setProperty("webdriver.chrome.driver", "C:\\WebDrivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         webDriver = new ChromeDriver();
         wait = new WebDriverWait(webDriver, 3);
     }
@@ -50,20 +53,16 @@ public class ZaliczenieSteps {
         webDriver.findElement(By.cssSelector("button[type=submit]")).click();
     }
 
-    @And("I check the correctness of the data")
-    public void iCheckTheCorrectnessOfTheData() {
-        String aliasOnPage = webDriver.findElement(By.id("field-alias")).getText();
-       // String addressOnPage = webDriver.findElement(By.id("field-address1")).getText();
-      //  String cityOnPage = webDriver.findElement(By.id("field-city")).getText();
-      //  String zipOnPage = webDriver.findElement(By.id("field-postcode")).getText();
-     //   String countryOnPage = webDriver.findElement(By.id("field-id_country")).getText();
-      //  String phoneOnPage = webDriver.findElement(By.id("field-phone")).getText();
-
-        String expectedText1 = "AnnSzy";
-        Assert.assertTrue(aliasOnPage.contains(expectedText1));
+    @And("I check the correctness of the data {string} alias, {string} address, {string} city, {string} zip,{string} country, {string} phone")
+    public void iCheckTheCorrectnessOfTheDataAliasAddressCityZipCountryPhone(String alias, String address, String city, String zip, String country, String phone) {
+        List<WebElement>  elements = webDriver.findElements(By.cssSelector("div.address-body"));
+        WebElement lastBox = elements.get(elements.size()-1);
+        String aliasOnPage = lastBox.findElement(By.tagName("h4")).getText();
+        Assert.assertEquals("AnnSzy", aliasOnPage);
+        String infoFromPage = lastBox.findElement(By.tagName("address")).getText();
+        String expectedAddress = "\n" + address + "\n" +city + "\n" + zip + "\n" + country + "\n" + phone;
+        Assert.assertEquals(expectedAddress, infoFromPage);
 
 
     }
-
-
 }
