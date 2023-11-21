@@ -19,11 +19,11 @@ public class Zad2StoreTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\WebDrivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
         webDriver = new ChromeDriver();
         wait = new WebDriverWait(webDriver, 3);
         webDriver.manage().window().maximize();
-        webDriver.get("https://prod-kurs.coderslab.pl/index.php?");
+        //webDriver.get("https://prod-kurs.coderslab.pl/index.php?");
         mainPage = new Zad2MainPage(webDriver, wait);
         loginPage = new Zad2LoginPage(webDriver, wait);
         productPage = new Zad2ProductPage(webDriver, wait);
@@ -33,7 +33,8 @@ public class Zad2StoreTest {
 
     @Test
     public void SignInAs() {
-        webDriver.get("https://prod-kurs.coderslab.pl/index.php?controller=authentication&back=my-account");
+        mainPage.openZad2MainPage();
+        loginPage.openZad2LoginPage();
         loginPage.signIn("stradlingrad@gmail.com", "RobieZakupy03!");
     }
 

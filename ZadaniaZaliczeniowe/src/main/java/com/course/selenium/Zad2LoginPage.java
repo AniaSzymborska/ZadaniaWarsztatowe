@@ -14,10 +14,12 @@ public class Zad2LoginPage {
         this.webDriver = webDriver;
         this.wait = wait;
     }
+    public void openZad2LoginPage(){
+        webDriver.get("https://mystore-testlab.coderslab.pl/index.php?controller=authentication&back=my-account");
+    }
 
     public void signIn(String email, String password) {
-        WebElement element = webDriver.findElement(By.id("field-email"));
-        element.sendKeys(email);
+        webDriver.findElement(By.id("field-email")).sendKeys(email);
         webDriver.findElement(By.id("field-password")).sendKeys(password);
         webDriver.findElement(By.id("submit-login")).click();
 
