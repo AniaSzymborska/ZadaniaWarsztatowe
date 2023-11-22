@@ -16,21 +16,20 @@ public class Zad2ProductPage {
     }
 
     public void addToCart(int quantity, String size) {
-        WebElement quantityInput = webDriver.findElement(By.name("qty"));
+        WebElement quantityInput = webDriver.findElement(By.id("quantity_wanted"));
         quantityInput.clear();
-        quantityInput.sendKeys(Integer.toString(quantity));
-        WebElement sizeDropDown = webDriver.findElement(By.name("group_1"));
+        quantityInput.sendKeys(Integer.toString(quantity)); // tu mam chyba problem
+        WebElement sizeDropDown = webDriver.findElement(By.id("group_1"));
         sizeDropDown.sendKeys(size);
-        WebElement addToCart = webDriver.findElement(By.cssSelector("button[name='Submit']"));
-        addToCart.click();
+
     }
 
-   // public Zad2CartPage goToCart() {
-   //     webDriver.get("https://mystore-testlab.coderslab.pl/index.php?controller=order");
-    //    return new Zad2CartPage(webDriver,wait);
-  //  }
-    public Zad2CheckoutPage goToCheckout(){
-        webDriver.findElement(By.cssSelector("a[title='Proceed to checkout']")).click();
-        return new Zad2CheckoutPage(webDriver,wait);
+    public void proceedToCheckout(){
+        webDriver.findElement(By.className("btn btn-primary add-to-cart")).click();
     }
+
+  //  public Zad2CheckoutPage goToCheckout(){
+   //     webDriver.findElement(By.cssSelector("a[title='Proceed to checkout']")).click();
+   //     return new Zad2CheckoutPage(webDriver,wait);
+    //}
 }

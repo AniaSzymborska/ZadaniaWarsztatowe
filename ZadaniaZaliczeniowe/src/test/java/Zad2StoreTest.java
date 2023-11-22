@@ -15,9 +15,10 @@ public class Zad2StoreTest {
     Zad2LoginPage loginPage;
     Zad2ProductPage productPage;
     Zad2CartPage cartPage;
-    Zad2CheckoutPage checkoutPage;
+    Zad2OrderPage orderPage;
+    Zad2ConfirmationPage confirmationPage;
 
-   @Before
+    @Before
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         webDriver = new ChromeDriver();
@@ -28,7 +29,8 @@ public class Zad2StoreTest {
         loginPage = new Zad2LoginPage(webDriver, wait);
         productPage = new Zad2ProductPage(webDriver, wait);
         cartPage = new Zad2CartPage(webDriver, wait);
-        checkoutPage = new Zad2CheckoutPage(webDriver, wait);
+        orderPage = new Zad2OrderPage(webDriver,wait);
+        confirmationPage = new Zad2ConfirmationPage(webDriver,wait);
     }
 
     @Test
@@ -40,16 +42,28 @@ public class Zad2StoreTest {
 
     @Test
     public void findProduct() {
+        mainPage.openZad2MainPage();
         mainPage.findSweater("Hummingbird Printed Sweater");
         productPage.addToCart(5, "M");
-        // cartPage = productPage.goToCart();
-        checkoutPage = productPage.goToCheckout();
+        productPage.proceedToCheckout();
+        cartPage.openZad2CartPage();
         boolean discountIs20Percent = cartPage.checkDiscount("20%");
         if (discountIs20Percent) {
             System.out.println("Rabat na produkt wynosi 20%");
         } else {
             System.out.println("Rabat na produkt nie wynosi 20%");
         }
+        cartPage.proceedToCheckout2();
+       // orderPage.confirmData();
+        orderPage.confirmAdress();
+        orderPage.shippingMethod();
+        orderPage.paymentOptions();
+        orderPage.conditionsToApprove();
+        orderPage.placeOrder();
+      //  confirmationPage.screenShot();
+
+
+
     }
 
 

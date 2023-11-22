@@ -1,6 +1,7 @@
 package com.course.selenium;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,6 +25,8 @@ public class Zad2MainPage {
 
     public void findSweater(String ProductName){
     webDriver.findElement(By.name("s")).sendKeys(ProductName);
-    webDriver.findElement(By.cssSelector("button[class='btn btn-default button-search']")).click();
+    webDriver.findElement(By.name("s")).sendKeys(Keys.ENTER);
+    webDriver.findElement(By.xpath("//h2/a[text()='Hummingbird printed sweater']")).click();
+
     }
 }
