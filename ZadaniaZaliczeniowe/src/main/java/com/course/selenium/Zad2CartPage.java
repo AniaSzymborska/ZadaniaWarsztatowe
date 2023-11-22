@@ -20,6 +20,6 @@ public class Zad2CartPage {
 
 
     public void proceedToCheckout2() {
-        webDriver.findElement(By.className("btn btn-primary")).click();
+        webDriver.findElement(By.cssSelector("div.cart-detailed-actions a")).click();
     }
 }

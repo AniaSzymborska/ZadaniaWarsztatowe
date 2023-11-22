@@ -42,10 +42,10 @@ public class Zad2OrderPage {
     }
 
     public void conditionsToApprove() {
-        webDriver.findElement(By.id("contitions_to_approve[terms-and-conditions]")).click();
+        webDriver.findElement(By.cssSelector("form#conditions-to-approve input")).click();
     }
     public void placeOrder(){
-        webDriver.findElement(By.xpath("//button[text()='Place order']")).click();
+        webDriver.findElement(By.cssSelector("div#payment-confirmation button[type='submit']")).click();
             }
 
 }

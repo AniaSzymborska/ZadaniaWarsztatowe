@@ -33,22 +33,19 @@ public class Zad2StoreTest {
         confirmationPage = new Zad2ConfirmationPage(webDriver, wait);
     }
 
+
+
     @Test
-    public void SignInAs() {
+    public void buyProduct() {
         mainPage.openZad2MainPage();
         loginPage.openZad2LoginPage();
         loginPage.signIn("stradlingrad@gmail.com", "RobieZakupy03!");
-    }
-
-    @Test
-    public void findProduct() {
         mainPage.openZad2MainPage();
         mainPage.findSweater("Hummingbird Printed Sweater");
         productPage.checkDiscount();
         productPage.addToCart1("M");
         productPage.addToCart2();
         productPage.proceedToCheckout();
-        //cartPage.openZad2CartPage();
         cartPage.proceedToCheckout2();
         // orderPage.confirmData();
         orderPage.confirmAdress();

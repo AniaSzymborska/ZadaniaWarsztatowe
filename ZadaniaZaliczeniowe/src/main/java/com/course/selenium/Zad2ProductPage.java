@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Zad2ProductPage {
@@ -32,15 +33,27 @@ public class Zad2ProductPage {
     public void addToCart2() {
         WebElement quantityInput = webDriver.findElement(By.id("quantity_wanted"));
         quantityInput.clear();
-        quantityInput.sendKeys(Keys.BACK_SPACE);
-        quantityInput.sendKeys("5");
-        WebElement buttonelement = webDriver.findElement(By.xpath("//button/i='[text()='Add to cart']"));
-        buttonelement.click();
+       // try {
+       //     Thread.sleep(1000);}
+     //   catch (InterruptedException e){
+      //      throw new RuntimeException(e);
+     //   }
+       // quantityInput.sendKeys(Keys.BACK_SPACE);
+        //quantityInput.sendKeys("5");
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("i.touchspin-up")));
+        for (int i = 1; i <=4;i++){
+            webDriver.findElement(By.cssSelector("i.touchspin-up")).click();
+        }
+        wait.until(ExpectedConditions.attributeToBe(By.id("quantity_wanted"),"value", "5"));
+        quantityInput.sendKeys(Keys.ENTER);
+       // WebElement buttonelement = webDriver.findElement(By.cssSelector("button.add-to-cart"));
+       // buttonelement.click();
     }
 
 
     public void proceedToCheckout() {
-        webDriver.findElement(By.cssSelector(".btn.btn-primary")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.cart-content a")));
+        webDriver.findElement(By.cssSelector("div.cart-content a")).click();
     }
 
 
