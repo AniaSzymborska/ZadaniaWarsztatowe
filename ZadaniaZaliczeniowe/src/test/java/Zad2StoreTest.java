@@ -53,7 +53,7 @@ public class Zad2StoreTest {
         orderPage.paymentOptions();
         orderPage.conditionsToApprove();
         orderPage.placeOrder();
-        //  confirmationPage.screenShot();
+        confirmationPage.screenShot(webDriver, "screenshot.png");
 
 
     }
