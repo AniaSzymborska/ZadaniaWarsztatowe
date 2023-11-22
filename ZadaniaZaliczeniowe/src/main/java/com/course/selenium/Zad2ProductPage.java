@@ -1,6 +1,7 @@
 package com.course.selenium;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,11 +22,11 @@ public class Zad2ProductPage {
         quantityInput.sendKeys(Integer.toString(quantity)); // tu mam chyba problem
         WebElement sizeDropDown = webDriver.findElement(By.id("group_1"));
         sizeDropDown.sendKeys(size);
-
+        webDriver.findElement(By.cssSelector(".btn.btn-primary.add-to-cart")).click();
     }
 
     public void proceedToCheckout(){
-        webDriver.findElement(By.className("btn btn-primary add-to-cart")).click();
+        webDriver.findElement(By.cssSelector(".btn.btn-primary")).click();
     }
 
   //  public Zad2CheckoutPage goToCheckout(){
