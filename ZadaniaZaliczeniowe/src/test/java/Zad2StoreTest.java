@@ -22,7 +22,7 @@ public class Zad2StoreTest {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         webDriver = new ChromeDriver();
-        wait = new WebDriverWait(webDriver, 5);
+        wait = new WebDriverWait(webDriver, 3);
         webDriver.manage().window().maximize();
         //webDriver.get("https://prod-kurs.coderslab.pl/index.php?");
         mainPage = new Zad2MainPage(webDriver, wait);
@@ -45,9 +45,10 @@ public class Zad2StoreTest {
         mainPage.openZad2MainPage();
         mainPage.findSweater("Hummingbird Printed Sweater");
         productPage.checkDiscount();
-        productPage.addToCart(5, "M");
+        productPage.addToCart1("M");
+        productPage.addToCart2();
         productPage.proceedToCheckout();
-        cartPage.openZad2CartPage();
+        //cartPage.openZad2CartPage();
         cartPage.proceedToCheckout2();
         // orderPage.confirmData();
         orderPage.confirmAdress();

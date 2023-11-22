@@ -14,11 +14,9 @@ public class Zad2CartPage {
         this.wait = wait;
     }
 
-    public void openZad2CartPage() {
-        webDriver.get("https://mystore-testlab.coderslab.pl/index.php?controller=cart&action=show");
-    }
-
-
+   // public void openZad2CartPage() {
+    //    webDriver.get("https://mystore-testlab.coderslab.pl/index.php?controller=cart&action=show");
+  //  }
 
 
     public void proceedToCheckout2() {
