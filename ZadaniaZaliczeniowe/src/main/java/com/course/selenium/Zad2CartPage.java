@@ -19,10 +19,7 @@ public class Zad2CartPage {
     }
 
 
-    public boolean checkDiscount(String expectedDiscount) {
-        String actualDiscount = webDriver.findElement(By.className("price cart_discount_price")).getText();
-        return actualDiscount.contains(expectedDiscount);
-    }
+
 
     public void proceedToCheckout2() {
         webDriver.findElement(By.className("btn btn-primary")).click();
