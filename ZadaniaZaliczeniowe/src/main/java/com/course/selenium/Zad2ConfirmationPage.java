@@ -1,11 +1,10 @@
 package com.course.selenium;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.TakesScreenshot;
-
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 
 public class Zad2ConfirmationPage {
@@ -17,11 +16,16 @@ public class Zad2ConfirmationPage {
         this.wait = wait;
     }
 
-  public void screenShot(WebDriver webDriver, String fileName) {
+    public void screenShot(WebDriver webDriver, String fileName) {
 
-      File screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
-      FileUtils.copyFile(screenshot, new File("screenshot.png"));
-      System.out.println("Zrzut ekranu został zapisany jako screenshot.png");
+        WebElement element = webDriver.findElement(By.id("order-confirmation"));
+        byte[] bytes = element.getScreenshotAs(OutputType.BYTES);
+        File file = new File("Screenshot.png");
+        try {
+            Files.write(file.toPath(), bytes);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

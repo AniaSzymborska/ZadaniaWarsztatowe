@@ -18,12 +18,12 @@ public class Zad2OrderPage {
     }
 
     public void confirmData() {
-        List<WebElement> elements = webDriver.findElements(By.cssSelector("div.address-body"));
-        WebElement lastBox = elements.get(elements.size() - 1);
-        String aliasOnPage = lastBox.findElement(By.tagName("h4")).getText();
+       // List<WebElement> elements = webDriver.findElements(By.cssSelector("div.address-body"));
+        //WebElement lastBox = elements.get(elements.size() - 1);
+        String aliasOnPage = webDriver.findElement(By.className("address-alias")).getText();
         Assert.assertEquals("AnnSzy", aliasOnPage);
-        String infoFromPage = lastBox.findElement(By.tagName("address")).getText();
-        String expectedAddress = "Ania Szymborska Testerow 14 Gdziekolwiek 00 - 112 United Kingdom 333 444 555";
+        String infoFromPage = webDriver.findElement(By.cssSelector("div.address")).getText();
+        String expectedAddress = "Ania Szymborska\nTesterow 14\nGdziekolwiek\n00-112\nUnited Kingdom\n333 444 555";
         Assert.assertEquals(expectedAddress, infoFromPage);
 
     }

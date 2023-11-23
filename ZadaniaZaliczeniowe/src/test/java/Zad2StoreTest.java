@@ -1,4 +1,5 @@
 import com.course.selenium.*;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -31,6 +32,10 @@ public class Zad2StoreTest {
         cartPage = new Zad2CartPage(webDriver, wait);
         orderPage = new Zad2OrderPage(webDriver, wait);
         confirmationPage = new Zad2ConfirmationPage(webDriver, wait);
+    }
+    @After
+    public void closeBrowser() {
+        webDriver.quit();
     }
 
 
