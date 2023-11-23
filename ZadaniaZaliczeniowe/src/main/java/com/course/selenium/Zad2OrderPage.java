@@ -17,16 +17,16 @@ public class Zad2OrderPage {
         this.wait = wait;
     }
 
-  //  public void confirmData() {
-     //   List<WebElement> elements = webDriver.findElements(By.cssSelector("div.address-body"));
-    //    WebElement lastBox = elements.get(elements.size() - 1);
-    ///    String aliasOnPage = lastBox.findElement(By.tagName("h4")).getText();
-   //     Assert.assertEquals("AnnSzy", aliasOnPage);
-      //  String infoFromPage = lastBox.findElement(By.tagName("address")).getText();
-     //   String expectedAddress = "\n" + address + "\n" + city + "\n" + zip + "\n" + country + "\n" + phone;
-    //    Assert.assertEquals(expectedAddress, infoFromPage);
+    public void confirmData() {
+        List<WebElement> elements = webDriver.findElements(By.cssSelector("div.address-body"));
+        WebElement lastBox = elements.get(elements.size() - 1);
+        String aliasOnPage = lastBox.findElement(By.tagName("h4")).getText();
+        Assert.assertEquals("AnnSzy", aliasOnPage);
+        String infoFromPage = lastBox.findElement(By.tagName("address")).getText();
+        String expectedAddress = "Ania Szymborska Testerow 14 Gdziekolwiek 00 - 112 United Kingdom 333 444 555";
+        Assert.assertEquals(expectedAddress, infoFromPage);
 
-  //  }
+    }
 
     public void confirmAdress() {
         webDriver.findElement(By.name("confirm-addresses")).click();
@@ -44,9 +44,10 @@ public class Zad2OrderPage {
     public void conditionsToApprove() {
         webDriver.findElement(By.cssSelector("form#conditions-to-approve input")).click();
     }
-    public void placeOrder(){
+
+    public void placeOrder() {
         webDriver.findElement(By.cssSelector("div#payment-confirmation button[type='submit']")).click();
-            }
+    }
 
 }
 

@@ -47,7 +47,7 @@ public class Zad2StoreTest {
         productPage.addToCart2();
         productPage.proceedToCheckout();
         cartPage.proceedToCheckout2();
-        // orderPage.confirmData();
+        orderPage.confirmData();
         orderPage.confirmAdress();
         orderPage.shippingMethod();
         orderPage.paymentOptions();

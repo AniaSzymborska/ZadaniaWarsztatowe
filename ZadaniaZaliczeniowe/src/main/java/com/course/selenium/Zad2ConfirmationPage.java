@@ -17,8 +17,11 @@ public class Zad2ConfirmationPage {
         this.wait = wait;
     }
 
-    public void screenShot(WebDriver webDriver, String fileName) {
+  public void screenShot(WebDriver webDriver, String fileName) {
 
+      File screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+      FileUtils.copyFile(screenshot, new File("screenshot.png"));
+      System.out.println("Zrzut ekranu został zapisany jako screenshot.png");
     }
 
 
